@@ -1,12 +1,13 @@
 <ion-content padding>
+
   <!-- #region value -->
   <div class="contents">
     <ion-row>
-      <ion-input type="number" class="value-input" [(ngModel)]="fromValue" placeholder="from" (keyup)="calculateCurrencyOne()"></ion-input>
+      <ion-input type="number" class="value-input" [(ngModel)]="fromValue" placeholder="amount" (keyup)="calculateCurrencyOne()"></ion-input>
     </ion-row>
 
     <ion-row>
-      <ion-input type="number" class="value-input" [(ngModel)]="toValue" placeholder="to" (keyup)="calculateCurrencyTwo()"></ion-input>
+      <ion-input type="number" class="value-input" [(ngModel)]="toValue" placeholder="converted" (keyup)="calculateCurrencyTwo()"></ion-input>
     </ion-row>
   </div>
   <!-- #endregion -->
@@ -14,29 +15,33 @@
   <!-- #region -->
   <ion-row>
     <ion-col class="selectors">
+      <label class="value-input" style="color: gray;">From:</label>
       <select class="select-list" [(ngModel)]="fromCurr" (change)="getCurrencyRate()">
         <option *ngFor="let item of countryCodes" selected value="{{item}}">{{item}}</option>
       </select>
     </ion-col>
 
     <ion-col>
+      <label class="value-input" style="color: gray;">To:</label>
       <select class="select-list" [(ngModel)]="toCurr" (change)="getCurrencyRate()">
         <option *ngFor="let item of countryCodes" value="{{item}}">{{item}}</option>
       </select>
     </ion-col>
   </ion-row>
 
+
+
   <ion-row>
     <ion-card class="card-view">
       <ion-card-header class="card-header">
-        <p>{{resultRate}}</p>
+        <p>Conversion rate: {{resultRate}}</p>
       </ion-card-header>
       <ion-card-content class="card-contents">
         <ion-row>
-          <p>{{countryNames.get(fromCurr)}}</p>
+          <p>From {{countryNames.get(fromCurr)}}</p>
         </ion-row>
         <ion-row>
-          <p>{{countryNames.get(toCurr)}}</p>
+          <p>To {{countryNames.get(toCurr)}}</p>
         </ion-row>
       </ion-card-content>
     </ion-card>
